@@ -19,7 +19,7 @@ class BookListController extends Controller
 
     public function detail($bookID)
     {
-        $book = Book::BookDetail($bookID)->first();
+        $book = Book::BookDetail($bookID)->with(['author','category','publisher'])->first();
         return $this->respondCollection("Success Book List", $book);
     }
 

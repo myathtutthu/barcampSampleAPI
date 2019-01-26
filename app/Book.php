@@ -12,4 +12,16 @@ class Book extends Model
     {
         $query->where('id', $bookID);
     }
+    public function author()
+    {
+        return $this->belongsTo("App\Author");
+    }
+    public function category()
+    {
+        return $this->belongsTo("App\Category");
+    }
+    public function publisher()
+    {
+        return $this->belongsTo("App\Publisher");
+    }
 }

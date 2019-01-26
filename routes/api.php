@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/books', 'BookListController@index');
+Route::get('/book/{id}', 'BookListController@detail');
+Route::post('/addNewBook', 'BookListController@insertNewBook');

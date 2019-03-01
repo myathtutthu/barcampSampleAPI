@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Http\Controllers\Traits\APIResponser;
+use App\Http\Resources\BookResource;
 use Illuminate\Http\Request;
 
 class BookListController extends Controller
@@ -34,5 +35,11 @@ class BookListController extends Controller
         $book->price = $request->input('price');
         $book->save();
         return $this->respondSuccessMsgOnly("Add new book success");
+    }
+    public function bookIndexResource()
+    {
+        //all() is not good
+        $books = Book::all();
+        return $this->respondCollection("Success Book List",  BookResource::collection($books));
     }
 }
